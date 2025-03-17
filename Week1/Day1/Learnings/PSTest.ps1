@@ -139,6 +139,11 @@ try{
 }finally{
 
 }
-'Hello'
 
+'Hello'
 $employees | Get-Member -MemberType Method
+
+$a = 10
+$b = 20
+$a + $b
+$A + $B
