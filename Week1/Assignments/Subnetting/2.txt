@@ -1,0 +1,29 @@
+Problem:
+Subnet the Class C IP Address 205.11.2.0 so that you have 30 subnets. What is the subnet mask for
+the maximum number of hosts? How many hosts can each subnet have? What is the IP address of host 3 
+on subnet 2? 
+
+205.11.2.0
+Class - C:/24 -> 255.255.255.0
+Subnets required: 30
+
+2^s >= required subnets
+2^5 = 32
+
+So we need to borrow 5 host bits
+/29 -> 255.255.255.248
+
+Hosts per subnet:
+2^3=8
+Usable hosts: 8-2=6
+
+subnet-1: 205.11.2.0
+subnet-2: 205.11.2.8
+subnet-3: 205.11.2.16
+subnet-4: 205.11.2.24
+
+IP Address of Host 3 on subnet 2: 205.11.2.11
+
+Subnet Mask: 255.255.255.248 (/29)
+Hosts per Subnet: 6 usable hosts
+IP Address of Host 3 on Subnet 2: 205.11.2.11

@@ -1,0 +1,11 @@
+Given Network: 192.168.0.0/16
+Need 5 subnets for 5 projects
+/16 = 2^(32-16) = 65,536
+subnet formula: 2^s >= required subnets
+2^3 = 8 (8 is greater than required 5)
+/(16+3) = /19
+11111111.1111111.111110.00000000
+Subnet Mask in decimal: 255.255.224.0
+Subnet Increment: 2^(32-19)=2^13 = 8192 
+Usable per subnet: 8192-2 = 8190
+so each project gets 8192 new ips

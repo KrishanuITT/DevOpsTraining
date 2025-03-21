@@ -1,0 +1,46 @@
+1. Basics of Git
+
+What is Git and why use it?
+It is a version control system 
+we use for Version Control, Collaboration, Code Management
+
+Installing Git and setting up Git config
+git config
+Initializing a repository (git init)
+Cloning repositories (git clone)
+Understanding working directory, staging area, and repository
+
+2. Essential Git Commands
+Adding files (git add)
+Committing changes (git commit -m "message")
+Checking status (git status)
+Viewing commit history (git log, git log --oneline)
+Removing files (git rm)
+Checking differences (git diff, git diff --staged)
+
+3. Branching and Merging
+Creating branches (git branch branch-name)
+Switching branches (git checkout branch-name, git switch)
+Merging branches (git merge)
+Resolving merge conflicts
+Deleting branches (git branch -d branch-name)
+
+4. Remote Repositories
+Adding a remote (git remote add origin <URL>)
+Fetching and pulling changes (git fetch, git pull)
+Pushing changes (git push origin branch-name)
+Forking a repository
+
+5. Rewriting History and Undoing Changes
+Resetting commits (git reset --soft, git reset --hard)
+Reverting changes (git revert)
+Stashing changes (git stash, git stash pop)
+Amending commits (git commit --amend)
+Cherry-picking commits (git cherry-pick commit-id)
+Squash commits (git rebase -i)**
+
+8. Github Branching Strategies
+Main Branch Strategy
+Feature Branch Strategy
+GitFlow Branch Strategy
+GitHub Flow Branch Strategy

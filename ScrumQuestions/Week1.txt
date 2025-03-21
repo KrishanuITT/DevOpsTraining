@@ -1,0 +1,93 @@
+What is git and why do we use it?
+Git is a version control system that is used to track changes in code and collaboration. We use it to maintain code versions, enable teamwork and it ensures good workflow.
+
+What are the types of version control?
+There are three types of version controle:
+Local: Stores version locally
+Centralized: It has a single central repository and everyone make changes at same time.
+Distributed: In this every user has a copy of the repository and make changes locally and then merge them.
+
+Which of these is better?
+Distributed Version Control is better because it allows offline work, provides better collaboration, and has no single point of failure.
+
+How do you initialize git?
+Using git init and git clone
+
+What changes will happen after git init?
+It creates a .git folder which holds the changes related to it.
+
+What is inside .git?
+In this folder we have
+ - hooks: stores all the hooks
+ - info: exclude -> gitignore
+ - logs: Keeps record of reference updates and actions
+ - objects: stores commit history, blob, trees and tags
+ - refs: it stores heads remotes stash and tags
+ - config: stores repository specific data
+ - FETCH_HEAD: stores temporarily the info about latest fetch
+ - HEAD: it is a pointer which stores the currently checked out branch
+
+What are commands related to HEAD?
+ - git checkout HEAD~1
+ - git reset --hard HEAD~1
+
+How many types of merging are there?
+ - Fast-Forward Merge: main branch no new commits (git merge)
+ - 3-way merge: main branch has commits (git merge)
+ - rebase merge: commits from one branch into another (git rebase)
+ - squash: Combines all commits from the branch into a single commit (git merge --squash )
+
+What is tags?
+They act as snapshot or mark specific commit 
+ - annotated tags: Stores metadata (author, message)
+ - lightweight tags: Simple pointer to commit
+ - git tag v1
+ - git tag -a v1 -m "msg"
+ - git show
+ - git push origin v1
+ - git push --tags
+ - git checkout -b <new-branch-name> <tag-name>
+
+How to create a new branch?
+We can create a new branch in two ways:
+ - git branch
+ - git checkout -b <branch_name>
+ - git switch -c <branch>
+
+What do you understand by git remote?
+Use to connect the local repository to the remote repository
+ - git remote add origin
+
+What is shell scripting?
+Shell scripting is the process of creating commands in a file to  automate the task
+- bash, sh, powershell
+
+Shell Script to print date?
+date
+formatting: date +%d/%m/%Y
+
+What does each no stand for in chmod?
+chmod (user)(group)(owner)
+read=1
+write=2
+execute=4
+chmod 700 filename
+
+Rest APIs in powershell?
+Invoke-RestMethod -Uri <endpoint>
+Invoke-RestMethod -Uri <endpoint> -Method Post -Body <body> -ContentType "application/json"
+Invoke-RestMethod -Uri <endpoint> -Headers $headers
+
+Star Pattern?
+
+function Pattern(){
+    $number=Read-Host -Prompt "Enter a number:"
+    for( $i=0; $i -lt $number; $i++){
+        for($j=0; $j -lt $i ;$j++){
+            Write-Host "*" -NoNewline
+        }
+        Write-Host ""
+    }
+}
+
+Pattern 

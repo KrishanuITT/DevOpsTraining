@@ -1,0 +1,27 @@
+Day1
+Write a shell script to print every alternate value in an array
+
+Write a shell script to take 2 numbers as input parameter, take user choice to select an arithmetic operation and perform it. The script should be able to handle five basic Arithmetic Operations and print the result based on user choice.
+
+Day2
+Write a script to check if a user exists.
+Automate disk space monitoring and send alerts if usage >80%.
+Schedule a script to back up /home to /backup daily.
+
+Day3
+Create a shell script using functions and parameters to 
+
+give read and write permission to a particular file 
+give read permission to a particular folder.
+Use Linux commands for the below points and document the process - 
+
+Create a new user, set a password, assign sudo access, and assign it to a group.
+Find all .log files in /var/log/ older than 7 days.
+Change permissions of /opt/devops/scripts so only the owner can read/write.
+
+Day4
+Create a self-explanatory diagram for creating subnets from a network.
+Subnet the Class C IP Address 205.11.2.0 so that you have 30 subnets. What is the subnet mask for the maximum number of hosts? How many hosts can each subnet have? What is the IP address of host 3 on subnet 2? 
+
+Day5
+Write the IP address 135.1.1.25 mask 255.255. 248.0 in CIDR notation

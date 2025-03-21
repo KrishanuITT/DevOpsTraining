@@ -1,0 +1,48 @@
+Rest APIS
+
+REST API stands for REpresentational State Transfer API.
+It is a type of API (Application Programming Interface) 
+that allows communication between different systems over the internet.
+
+REST APIs use HTTP methods (such as GET, POST, PUT, DELETE)
+to define actions that can be performed on resources.
+
+Features of REST APIs:
+Stateless: All data required to complete a request is present in this.
+Client-Server Architecture
+
+
+REST APIs in Powershell:
+
+Invoke-RestMethod
+Invoke-WebRequest
+
+GET API:
+$apiUrl = "https://jsonplaceholder.typicode.com/posts/1"
+$response = Invoke-RestMethod -Uri $apiUrl -Method Get
+$response
+
+POST API:
+$apiUrl = "https://jsonplaceholder.typicode.com/posts"
+$body = @{
+    title = "PowerShell REST API"
+    body  = "This is a test post"
+    userId = 1
+} | ConvertTo-Json
+$response = Invoke-RestMethod -Uri $apiUrl -Method Post -Body $body -ContentType "application/json"
+$response
+
+POST API:
+$apiUrl = "https://jsonplaceholder.typicode.com/posts/1"
+$body = @{
+    title = "Updated Title"
+    body  = "Updated content"
+} | ConvertTo-Json
+
+$response = Invoke-RestMethod -Uri $apiUrl -Method Put -Body $body -ContentType "application/json"
+$response
+
+DELETE API:
+$apiUrl = "https://jsonplaceholder.typicode.com/posts/1"
+$response = Invoke-RestMethod -Uri $apiUrl -Method Delete
+$response

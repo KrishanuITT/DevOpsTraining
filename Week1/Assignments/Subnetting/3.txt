@@ -1,0 +1,6 @@
+Problem: Write the IP address 135.1.1.25 mask 255.255. 248.0 in CIDR notation
+
+255.255.248.0 -> 11111111.11111111.11111000.00000000
+No of 1s: 21
+CIDR Notation: /21
+135.1.1.25/21

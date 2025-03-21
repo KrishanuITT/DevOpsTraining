@@ -1,0 +1,24 @@
+# Problem Statement:
+# Write git commands to add all files in the staging area, commit to move changes from the staging area, and push those changes to the main repository.
+
+git add .
+git commit -m "Initial Commit"
+git push origin main
+
+
+# Practice resolving merge conflicts by creating 2 branches and pushing code to the main branch. 
+git checkout -b main
+echo "Line 1" > file.txt
+git add file.txt
+git commit -m "Initial Commit"
+git checkout -b feature
+echo "Line 2 from feature" >> file.txt
+git add file.txt
+git commit -m "Updated file.txt in feature"
+git checkout main
+echo "Line 2 from main" >> file.txt
+git add file.txt
+git commit -m "Updated file.txt in main"z
+git merge feature
+resolved using vim
+git push origin main
