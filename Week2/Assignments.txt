@@ -1,0 +1,232 @@
+1. Create Custom IAM role, policy and attach it to IAM user. Also enable MFA for that user
+
+    Go to IAM section.
+    Click on Policies.
+    Create a new Policy.
+    Add action and resource to the policy json.
+    Then go to Roles.
+    Create a new Role.
+    Then write the permission by sts:Assume role and add the user
+    Then Add Permission.
+    Click on Customer Managed Permission.
+    Attach your custom policy.
+    Then create a new User.
+    After creating user.
+    Go the that user section.
+    Go to permission section and add permission.
+    Attach the customer managed IAM Policy.
+    Go to the Security credentials tab.
+    Click Manage Multi-Factor Authentication (MFA).
+    Choose a method (Virtual MFA, Security Key, or Hardware MFA).
+    Follow the setup instructions and complete the MFA setup.
+
+2. Create a VPC in AWS. Create a public and private subnet in it.
+    Go to the AWS VPC Console.
+    Click on Create VPC.
+    Enter a CIDR. Based on the no of IPs required for your pupose.
+    Then Go to subnets section.
+    Click on create subnet.
+    Select your custom VPC.
+    In subnet section give subnet a name and choose a availability zone.
+    Then on the no of IPs required on that subnet write the subnet CIDR.
+    Then Click on add a subnet, do the same as above for it.
+    Please check that CIDR for subnet should not overlap and they should not be out of bound of VPC CIDR.
+    By Default Every subnet is private only.
+    Go to InternetGateway section, and create a internet gateway.
+    Then attach igw to the VPC.
+    Then create a new route table and attach it to a vpc.
+    Edit the routes of that table, and for all ips allow it to go to igw.
+    Then go to the public subnet and edit the route table association.
+    Ensure that Auto-assign Public IP is enabled while launching the instance.
+    Create a security group and allow ICMP (ping) and SSH (port 22) from 0.0.0.0/0.
+    Then launch a ec2 in the public subnet and try ping to test if connected to the internet.
+
+3. Launch an On-demand EC2 instance with 7 GB EBS volume attached to it in AP-South-1 region. Configure your security groups such that only people within your InTimeTec network are able to SSH into it.
+    Go to the AWS EC2 Console.
+    Click on Launch Instance.
+    Select an AMI of your choice.
+    Choose an instance type as per your requirement.
+    Select the AP-South-1 (Mumbai) region.
+    In the storage section, specify a 7 GB EBS volume.
+    Go to the security group section and create a new security group.
+    In the inbound rules, allow SSH (port 22) access only from your company's network IP range
+    Launch the instance with the configured settings.
+    Once the instance is running, try SSH-ing into it from within your company network to verify access.
+
+4. Create a S3 bucket with versioning enabled for the objects. Map out a bucket policy such that every object we put within the bucket needs to be encrypted by default using KMS keys.
+    Go to the S3 Console.
+    Click on create bucket.
+    Make it general purpose and choose a globally available name.
+    In bucket versioning, select enabled.
+    In default encryption, select server side encryption with aws key management Service(KMS).
+    Select the default KMS key.
+
+5. Create another s3 bucket in another account with similar configuration and implement cross account replication between both buckets.
+    In the other account do the same process as here.
+    Then in the main account go to the bucekt's management section and go to replication rules.
+    Create a replication rule.
+    Select the source and destination bucket
+    Create an Iam role to get the permission to do this.
+    Then save.
+    Now as soon as a new file is uploaded that will be replicated in the other account.
+
+6. Launch an ALB in AP-South-1 region and load balance the traffic to 2 EC2 instances.
+    Step 1: Launch EC2 Instances
+    Go to the EC2 Console:
+    Click on Launch Instance.
+    Select Number of Instances as 2.
+    Under Load balancers.
+    Click on Create Load Balancer.
+    Select Application Load Balancer (ALB).
+    Scheme: Choose internet-facing for public access.
+    IP address type: Select ipv4.
+    Listeners: By default, port 80 is selected for HTTP
+    Availability Zones: Select two availability zones (one for each EC2 instance).
+    Target Group: Create a new target group.
+    Choose Instances as the target type.
+    Click on Create after configuring the target group.
+    After creating the target group, register the two EC2 instances you launched earlier.
+    Select your EC2 instances and click on Include as targets.
+    Click Create to create the ALB.
+    
+7. Launch a VPC with 2 Subnets (1 Public, 1 Private)
+8. Create an EC2 instance in both public and private subnets. The private subnet instance should only be accessible from the public subnet over SSH. Both instances should be able to communicate to the internet.
+    Go to the VPC Console
+    Click on Create VPC.
+    Enter a CIDR block for your VPC (10.0.0.0/20)
+    Click Create.
+    Go to the Subnets section.
+    Click Create subnet.
+    Select the VPC you just created.
+    Name it PublicSubnet.
+    Choose one availability zone.
+    Choose a CIDR block (10.0.1.0/24)
+    Enable this Auto Assign Public IP to ensure instances in the public subnet get public IPs 
+    Add a Private Subnet:
+    Name it PrivateSubnet
+    Choose a CIDR block (10.0.2.0/24)
+    Click Create subnet
+    In the VPC dashboard, go to Internet Gateways.
+    Click Create internet gateway.
+    Give it a name and click Create.
+    After creating the IGW, click on it, then click Attach to VPC.
+    Select the VPC you created earlier and click Attach.
+    Go to Route Tables in the VPC Dashboard.
+    Create a new route table for the public subnet. Name it PublicRouteTable.
+    Select the route table and click Edit routes.
+    Add a route with destination 0.0.0.0/0 and target set to the Internet Gateway (IGW).
+    Now, go to the Subnet Associations tab and associate the PublicSubnet with this route table.
+    The private subnet should route traffic to the Internet Gateway through a NAT Gateway.
+    Go to Elastic IPs, allocate a new Elastic IP.
+    Then, go to the NAT Gateways section and click Create NAT Gateway.
+    Choose the public subnet, assign the Elastic IP, and click Create.
+    Create a new route table for the private subnet, name it PrivateRouteTable.
+    Edit the routes and add a route with destination 0.0.0.0/0 and target as the NAT Gateway you created.
+    Go to Subnet Associations and associate the private subnet with this route table.
+    Go to the EC2 Console and click Launch Instance.
+    In the Network section, select the VPC and PublicSubnet.
+    Enable Auto-assign Public IP.
+    Configure Security Group: Allow SSH (port 22) from your IP.
+    Complete the setup and launch the instance.
+    Repeat the process but select the PrivateSubnet.
+    The instance will not have a public IP.
+    Create a new Security Group that allows SSH (port 22) from the PublicSubnet security group or public IP range.
+    Ensure that the security group for the public EC2 instance allows SSH (port 22) from your IP address.
+    SSH into the Public EC2 instance using its public IP.
+    From there, SSH into the Private EC2 instance using its private IP.
+
+9. Create Auto Scaling group of EC2 instances and scale in/out based on Average CPU Utilization
+    Go to Auto Scaling Groups in the EC2 Console.
+    Click Create Auto Scaling Group.
+    Choose an AMI and instance type
+    Select the VPC, Public Subnet
+    Select Target Tracking.
+    Choose Average CPU Utilization as the metric.
+    Set the target to, 50% CPU utilization.
+    Set the desired number of instances
+    Configure scaling policies
+    Click Create to launch the Auto Scaling Group.
+
+10. Create RDS and understand the options related to muti AZ, read replica
+    GO to RDS, click on DB instances.
+    Click on Create DB instance.
+    Choose Standard Create for more flexibilty in configuration.
+    Choose Easy Create to make it easy and follow best practices.
+    Based on requirement select the engine (MySQL, PostgreSQL, Oracle, etc.)
+    We have three templates:
+        Prod
+        Dev/test
+        Free
+    Then we have availability and durability section:
+        Multi AZ cluster deployment (3 instance) one main and two readonly in different AZ
+        Multi AZ cluster deployment (2 instance) one main and one readonly in different AZ
+        Single AZ
+    Then select Db name
+    Setup Username and password for db
+    Then select DB Instance Class
+    Then under Connectivity:
+    Select the VPC
+    Select the AZ
+    You can make the DB Public or Private
+
+11. Understand private and public db connection
+    Private DB Connection are those which can only be access from a private network or VPC.
+    They are generally used for Production Database.
+    Connecting to private DB:
+        ssh -i mykey.pem ec2-user@<EC2-Public-IP>
+        mysql -h <Private-RDS-IP> -u admin -p
+
+    Public DB Connection are those that can be access from anywhere using the http protocol.
+    They are generally used for testing
+    connecting to Public DB:
+        mysql -h <Public-IP> -u admin -p
+
+12. Create a Lambda function in Python that automatically copies images from the source  S3 bucket to the destination S3 bucket as soon as they gets uploaded in the source bucket.
+    Go to Lambda console.
+    Create a lambda function choose python as runtime.
+    Create am Iam role for lambda to give necessary permissions.
+    Write the logic to copy images from source bucket to destination bucket.
+    Go to the src S3 bucket and create a new event notification.
+    Select Event Type as All object create event.
+    Select Lambda as destination and choose your lambda. Then save changes.
+    Now when image is uploaded to s3, lambda will copyb it to other s3.
+
+13. Explore Cloudfront and showcase ALB as origin to it
+    Create an ALB with 2 EC2 instances as target.
+    Now go to Cloudfront.
+    Then click on create distribution.
+    Then under default cache behaviour
+    Select redirect http to https  and also select allowed http methods
+    Then under chache policy choose chachingOptimized
+    Then under settings: choose all edge locations 
+
+14. Create a CPU utilisation matrix for an EC2 instance on cloudwatch, and if the CPU utilization goes above 80%, an alarm should get triggered and use SNS topic to send email to the yourself in case of an alarm state.
+    Go to CloudWatch Console
+    Click Create Alarm.
+    Select a Metric
+    Click Select Metric.
+    Choose EC2 metrics > Per-Instance Metrics.
+    Find and select CPUUtilization for your target EC2 instance.
+    Click Select Metric.
+    Define Alarm Conditions
+    Threshold Type: Static
+    Select Greater than
+    Enter 80
+    Period 5 minutes
+    Go to Amazon SNS Console
+    Click on Topics > Create Topic.
+    Select Standard topic type.
+    Enter a name
+    Click Create Topic.
+    Create an Email Subscription
+    Click on the topic you just created.
+    Go to Subscriptions > Create Subscription.
+    Protocol: Choose Email.
+    Endpoint: Enter your email address.
+    Click Create Subscription.
+    Check your email and confirm the subscription.
+    Return to CloudWatch Alarm Setup
+    Under Notification Settings, select Create a New Notification.
+    Choose Send a notification to an SNS topic.
+    Select the SNS topic you just created
+    Click Create Alarm.
