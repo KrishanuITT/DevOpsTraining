@@ -1,0 +1,47 @@
+# Problem Statement:
+Create a document including the steps to work with GIT using VS Code UI
+
+Choose a local folder and open it in VS Code.
+Open Source Control on Left Side
+Click "Initialize Repository"
+
+Check Git Status
+Go to the Source Control panel to see changes.
+
+Stage Changes
+Click the + icon next to modified files or "Stage All" to stage all changes.
+
+Commit Changes
+Enter a commit message in the text box and click the checkmark
+
+Push Changes
+Click the "Sync Changes" button or use the Command Palette
+
+Pull Changes
+Click "Pull" from the Source Control panel
+
+Create a New Branch
+Click the branch name in the status bar.
+Select "Create New Branch," enter a name, and switch to it.
+
+Switch Branches
+Click the branch name in the status bar and select the desired branch.
+
+Merge Branches
+Switch to the target branch.
+select the branch to merge.
+
+Resolve Merge Conflicts
+Conflicted files show up in the Source Control panel.
+Click on them, choose the correct changes, and commit.
+
+Revert Changes
+Right-click a file in Source Control and select "Discard Changes."
+
+Delete a Branch
+Open the Command Palette (Ctrl+Shift+P) → "Git: Delete Branch" and select the branch.
+
+Stash Changes
+Right click to Stash to temporarily save changes.
+
+Use "Git: Apply Stash" to retrieve them later.

@@ -1,0 +1,144 @@
+1. What are the default permissions that a user get when it is created?
+While creating user we can add the checkbox to give permission to access AWS Console.
+Other wise a default User would have no other permissions.
+
+2. Cross Account Connection Hands on:
+Go to account A:
+Create an IAM role
+Allow that role to Action:"sts AssumeRole" Principle=> AWS=> arn:aws:iam:<accno-b>:root
+Then add a policy to the role 
+that allows s3 permission
+Then go to Account B:
+And move data from the S3 bucket in account A to Account B.
+Using Lambda.
+
+3. Identity Center
+Step 1: Enable AWS Identity Center
+Step 2: Configure Identity Source as Identity Center Directory
+Step 3: Create User
+Step 4: Assign Permissions to User
+
+4. Other Usecases for EC2:
+Web Hosting
+Big Data Analytics 
+AI & ML Model training - Train and Deploy Models
+Gaming - host mutiplayer game server
+
+5. Availability Zone:
+Region are geographical locations where data centers are located. (Eg: India, USA)
+Availability Zones are those geographically isolated data centers located inside such regions.
+
+6. Session Manager
+Session Manager is used to a secure and log access to EC2 instances and on-premises servers without needing SSH or RDP.
+
+7. Different Type of EC2 Instances:
+    1. General Purpose
+    T (Burstable Performance) – T3, T3a, T4g
+    M (Balanced Performance) – M5, M6g
+
+    2. Compute Optimized
+    C (Compute-Intensive) – C5, C6g
+
+    3. Memory Optimized
+    R (RAM-Optimized) – R5, R6g
+    X (Extreme Memory) – X1, X2
+    Z (High Frequency & RAM) – Z1d
+
+    4. Storage Optimized
+    I (IOPS-Optimized, SSD) – I3, I4g
+    D (Dense Storage, HDD) – D2
+    H (High Storage Throughput) – H1
+
+    5. GPU Optimized
+    G (General GPU) – G5
+    P (Powerful GPU, AI/ML) – P3, P4
+
+    6. High-Performance Computing (HPC)
+    Hpc (HPC workloads) – Hpc6a
+    U (Ultra High Memory) – U6tb
+
+8. ⁠Stateful vs Stateless
+    Stateful or Stateless means that the system remembers the previous request or treats each request as new.
+
+9. ⁠Inbound vs Outbound Rules in Security Group
+    Example: Security Groups allow all inbound request to go outbound => Stateful
+    NACL (Network Access Control List) treats each request independently and does not allow every inbound request to go outbound => Stateless
+
+10. Flowlogs
+    Flow logs show the network requests for VPCs, subnets etc.
+
+Concurrency
+    Concurency is running a many lambda function simultaneusly.
+    But many lead to cold start.
+    There are two types of Lambda Concurrency:
+        Reserved:
+        AWS manages the no of instances required to handle incoming requests.
+        To avoid your function being affected by other functions using all available concurrency in your account.
+
+        Provisioned:
+        Allows us to always have a pre warmed up instance running.
+
+Env Variable
+    Go to configurations
+    Go to env varibales
+    Create a key and value pair.
+    Use that environment variables like os.getenv['ENV_VARIABLE_NAME']
+
+Cold Start
+
+How does Lambda connect with Public API
+If the lambda is running in a confugured VPC.
+    You have to check if the subnet in which Lambda is running is configured 
+    with Internet Gateway or NAT Gateway.
+    You also need to give IAM permission to lambda to 
+
+What does Lambda Run in background?
+    Lambda run on EC2, but we do not have to manage these EC2 so that is why lambda is serverless.
+
+Lambda USe Cases -> dotnet application
+    Lambda can be used to deploy ASP.Net Application.
+    Install ASP.net
+    dotnet tool install -g Amazon.Lambda.Tools
+    dotnet new --install Amazon.Lambda.Templates
+    dotnet new serverless.AspNetCoreWebAPI -n AspNetOnLambda
+    cd AspNetOnLambda/src/AspNetOnLambda
+    dotnet lambda deploy-serverless
+where is it deployed
+
+What and Why S3?
+S3 how to make it publically accessible
+S3 versioning
+S3 Storage Classes
+S3 Life Cycle
+IAM vs Bucket policy
+S3 KMS
+Client Side Encryption vs Server Side Encryption
+
+Object Lock
+Amazon S3 Object Lock is a feature that helps you protect objects from being deleted or overwritten for a specified period or indefinitely. It's commonly used for compliance purposes, such as to enforce retention policies or legal hold requirements, ensuring that data is preserved and cannot be modified or deleted.
+
+Edge Location
+Origin Access Control
+Origin Access Identity
+Cloudfront Time
+TTL
+Lambda Edge -> Cloud Front Lambda Edge
+Cloud Front Error Debugging
+WAF (Web Application Firewall)
+
+NACL (Network ACL):
+ A stateless firewall controlling inbound and outbound traffic at the subnet level in AWS.
+NAT (Network Address Translation):
+ Allows private instances to access the internet while keeping them hidden from inbound traffic.
+DHCP (Dynamic Host Configuration Protocol):
+ Automatically assigns IP addresses and network configurations to devices.
+Endpoint:
+ A private connection to AWS services without using the public internet.
+Transit Gateway:
+ A scalable hub for connecting VPCs and on-premises networks in AWS.
+Site-to-Site VPN:
+ A secure encrypted tunnel between an on-premises network and AWS.
+Direct Connect:
+ A dedicated, high-speed private network link between on-premises data centers and AWS.
+
+Class Range for classful 

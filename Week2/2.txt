@@ -1,0 +1,5 @@
+Create a VPC in AWS. Create a public and private subnet in it.
+
+1. Go to VPC Dashboard.
+2. Click on Create VPC Button.
+3. 

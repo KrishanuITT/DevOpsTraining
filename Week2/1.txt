@@ -1,0 +1,24 @@
+Create Custom IAM role, policy and attach it to IAM user. Also enable MFA for that user
+
+Steps:
+1. Login to AWS Account as Root User.
+# Create a IAM Policy
+2. Go to IAM.
+3. Click on Policy.
+4. Click on create Policy.
+5. Write the JSON to give permissions.
+6. Click on Next.
+7. Give a name to the policy.
+# Create a IAM Role
+8. Staying in IAM click on Roles.
+9. Click on Create Role
+10. Select a particular entity type depenging upon the use case of the role:
+    i. AWS Serivce
+    ii. AWS Account
+    iii. Web Entity
+    iv. SAML 
+    v. Create a Custom Trust policy (I selected)
+11. Add Actions, Principle or Condition
+12. Then Click Next, and select custom Policy.
+13. Then Click Next, Give Role name
+14. Then Click Create Role.

@@ -1,0 +1,12 @@
+Launch an On-demand EC2 instance with 7 GB EBS volume attached to it in AP-South-1 region. Configure your security groups such that only people within your InTimeTec network are able to SSH into it.
+
+1. Go to EC2 Dashboard.
+2. Name the instance.
+3. Select the AMI (Amazon Machine Image)
+4. Choose the architecture type.
+5. The Choose the instance type. (t2.micro)
+6. Create a keypair .pem file to ssh into the instance.
+7. The select create a new security group.
+8. Select open port 22 for ssh and select my ip range
+9. Change the mode for user to be able to read and write.    
+10. ssh into the instance using the command (ssh -i <key>.pem@<ec-public-ip>)
