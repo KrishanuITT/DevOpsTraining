@@ -1,0 +1,9 @@
+https://developer.hashicorp.com/terraform/docs
+https://developer.hashicorp.com/terraform/tutorials/aws-get-started
+
+1. Create documentation about the basics of Terraform. Include your learnings about Terraform providers, TF state, lock file, and basic commands.
+2. Create a VPC and Subnets in AWS using Terraform
+3. Create EC2 instance (Windows/Linux) using Terraform inside the previously created VPC & Subnet
+4. Import an existing resource from AWS in Terraform state file
+5. Configure the remote backend in S3 to store the state file for your terraform module
+6. Deploy a static web application on EC2 instance using modularized Terraform code. The backend should be configured in S3
