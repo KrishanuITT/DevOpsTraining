@@ -1,0 +1,13 @@
+Pushing image to ECR
+
+# Authenticate to ECR 
+aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 445567072967.dkr.ecr.ap-south-1.amazonaws.com
+
+# Build image
+docker build -t krishanu/my-repo .
+
+# change the tag of the image
+docker tag krishanu/my-repo:latest 445567072967.dkr.ecr.ap-south-1.amazonaws.com/krishanu/my-repo:latest
+
+# push docker image to ecr
+docker push 445567072967.dkr.ecr.ap-south-1.amazonaws.com/krishanu/my-repo:latest

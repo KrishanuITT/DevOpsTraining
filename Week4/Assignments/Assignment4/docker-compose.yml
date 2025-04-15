@@ -1,0 +1,17 @@
+services:
+  container1:
+    image: busybox
+    container_name: container1
+    command: sh -c "while true; do sleep 30; done"
+    volumes:
+      - shared-data:/app
+
+  container2:
+    image: busybox
+    container_name: container2
+    command: sh -c "while true; do sleep 30; done"
+    volumes:
+      - shared-data:/app
+
+volumes:
+  shared-data:
