@@ -1,0 +1,57 @@
+providers
+required_providers
+alias
+version
+
+Resource Block
+Resource Behaviour
+
+Variables
+Input
+Output
+Local
+
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+terraform show
+terraform get
+terraform fmt
+terraform validate
+terraform apply -var 
+terraform apply -var-file=tgcvar
+ 
+5 methods for passing variables
+ 
+terraform output
+terraform refresh
+terraform taint
+terraform import
+terraform graph
+terraform workspace
+ 
+azure arm templates
+ 
+environmetn variables
+terraform lock file
+ 
+azure backend
+ 
+Workspace
+ 
+locals.tf
+ 
+how to hide variables
+ 
+foreach and count
+
+How to manage workspace statefile in backends
+How to use secret manager secret in terraform which is already created
+Terraform graphs
+Cyclic Dependency
+If no depends upon what will happen
+
+Terratest
+Kitchen Terraform
+checkov

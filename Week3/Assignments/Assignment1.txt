@@ -1,0 +1,28 @@
+What is Terraform?
+Terraform is an Infrastructure as Code tool that lets us define and provision infrastructure using a configuration language (HCL).
+
+Terraform Providers
+Providers are plugins that allow Terraform to manage external APIs and services (like AWS, Azure, GCP).
+
+Terraform State (terraform.tfstate)
+Stores current state of your infrastructure.
+Used to detect changes and apply.
+Can be local or remote.
+
+Lock File (.terraform.lock.hcl)
+Records the exact provider versions used.
+Ensures consistency across environments.
+
+Basic Commands
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+terraform validate
+terraform fmt
+terraform providers
+
+
+
+
+
