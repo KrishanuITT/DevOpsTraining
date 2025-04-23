@@ -1,0 +1,6 @@
+Create a basic minikube cluster on local system. Create a namespace and deploy an ubuntu POD in it.
+Create a pod with a basic HTML page and service to expose that pod
+Create config maps, secrets, and volumes and assign them to already created pods.
+Create a Deployment with 3 replicas of a NGNIX web app, create hpa and assign auto scaling.
+Create a public EKS cluster. Configure your local system to access and manage the cluster
+Use the ECR image created for the .Net application and deploy it on minikube. The Application in the pod should be accessible on the browser. Assign suitable resource limits and requests on namsepace and deployment levels respectively.

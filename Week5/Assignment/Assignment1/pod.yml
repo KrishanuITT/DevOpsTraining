@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+  namespace: assignment
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu:latest

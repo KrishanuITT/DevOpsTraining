@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-apache
+  namespace: practice
+spec:
+  selector:
+    matchLabels:
+      app: myapp-apache
+  template:
+    metadata:
+      labels:
+        app: myapp-apache
+    spec:
+      containers:
+      - name: myapp-apache
+        image: httpd
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: /var/www/html
+            name: mypv
+      volumes:
+        - name: mypv
+          persistentVolumeClaim:
+            claimName: mypvc

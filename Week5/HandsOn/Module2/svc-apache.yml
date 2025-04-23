@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-svc-apache
+  namespace: module
+spec:
+  selector:
+    app: app-apache
+  ports:
+  - port: 80
+    targetPort: 80
